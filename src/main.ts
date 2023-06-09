@@ -208,3 +208,35 @@ function getUserProfile(user: User, account: Account): UserProfile {
 }
 
 console.log(getUserProfile(vania,vaniaSite));
+
+
+
+console.clear()
+// |||||||||| home ts 2 |||||||||||||||
+
+
+// Задача 1: Перевірка типу об'єкту 
+// Напишіть функцію, яка приймає параметр, 
+// і перевіряє, чи є цей параметр об'єктом з властивістю name. 
+// Якщо параметр є об'єктом з властивістю name, виведіть на екран 
+// повідомлення зі значенням name. Інакше, виведіть повідомлення, 
+// що параметр не має властивості name.
+
+
+const userProfile: UserProfile = {
+  name: 'Ivan',
+  age: 27,
+  username: 'JS',
+  email: 'front-end@gmail.com'
+}
+console.log("userProfile:", userProfile)
+
+function validName(user: UserProfile): void {
+  if(typeof user === 'object' && 'name' in user) {
+    console.log(user.name);
+  } else {
+    console.log('Параметр не має властивості name');
+  }
+}
+
+validName(userProfile)

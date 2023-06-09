@@ -20,7 +20,7 @@ body {
 
 div {
   width: 700px;
-  margin-top: 50px;
+  margin: 25px 0;
 }
 
 p {
@@ -28,4 +28,9 @@ p {
   border-radius: 5px;
   box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 0.7);
   padding: 10px 15px;
+}
+
+.task1, .task2 {
+  border: 2px dashed rgb(82, 78, 78);
+  padding: 0px 10px;
 }
