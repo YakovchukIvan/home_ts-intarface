@@ -1,88 +1,5 @@
 import './style.css'
 
-let status: number = 0;
-console.log("status:", status)
-
-interface Rect {
-  readonly id: string
-  color?: string
-  size: {
-    width: number
-    height: number
-  }
-}
-
-const rect1: Rect = {
-  id: '1234',
-  size: {
-    width: 50,
-    height: 20
-  },
-  color: '#ccc'
-}
-
-const rect2: Rect = {
-  id: '12345',
-  size: {
-    width: 10,
-    height: 5
-  }
-}
-
-rect2.color = 'black'
-// rect2.id = '3232'
-
-const rect3 = {} as Rect
-const rect4 = <Rect>{}
-
-// ===================
-
-interface RectWithArea extends Rect {
-  getArea: () => number
-}
-
-const rect5: RectWithArea = {
-  id: '123',
-  size: {
-    width: 20,
-    height: 20
-  },
-  getArea(): number {
-    return this.size.width * this.size.height
-  }
-}
-
-console.log(  rect5.getArea());
-
-// =================
-
-interface IClock {
-  time: Date
-  setTime(date: Date): void
-}
-
-class Clock implements IClock {
-  time: Date = new Date()
-
-  setTime(date: Date): void {
-    this.time = date
-  }
-}
-
-// ====================
-
-interface Styles {
-  [key: string]: string
-}
-
-const css: Styles = {
-  border: '1px solid black',
-  marginTop: '2px',
-  borderRadius: '5px'
-}
-
-
-
 // Задача 1: Реалізація інтерфейсу для геометричних фігур 
 // Створіть інтерфейс Shape, який має дві властивості: name 
 // типу string і calculateArea типу функції, яка повертає number. 
@@ -216,8 +133,13 @@ console.log(getUserProfile(vania,vaniaSite));
 
 
 
+// ||||||||||||||||||||||||||||||||||||||||
 
-// |||||||||| home ts 2 |||||||||||||||
+
+
+
+// ********** TASK 2 *************
+
 
 
 // Задача 1: Перевірка типу об'єкту 
@@ -247,7 +169,6 @@ function validName(user: UserProfile): void {
 validName(userProfile)
 
 
-console.clear()
 // =================
 
 // Задача 2: Перевірка типу масиву чисел 
@@ -270,3 +191,112 @@ function validNumber(number: number[]): void {
 }
 
 validNumber(arrayNumber)
+
+
+
+
+
+
+
+
+// ||||||||||||||||||||||||||||||||||||||||
+
+
+
+// ********** TASK 3 *************
+
+// Задача 1: Об'єднання ізольованих даних
+
+// Створіть тип даних Tuple, який містить ім'я користувача (string) 
+// і його вік (number). Потім створіть змінну, використовуючи цей тип, 
+// і присвойте їй значення.
+
+
+type Person  = {
+  name: string;
+  age: number;
+}
+
+const person: Person = {
+  name: 'Ivan',
+  age: 27
+}
+console.log("person:", person)
+
+
+
+// Задача 2: Фільтрація масиву об'єктів 
+
+// Напишіть функцію, яка приймає масив об'єктів і рядкову властивість, 
+// і повертає новий масив, який містить тільки об'єкти, у яких 
+// властивість має задане значення.
+
+
+const arrayTask2: Person[] = [
+  {name: 'Ivan', age: 24},
+  {name: 'Volody', age: 25},
+  {name: 'Ivan', age: 25},
+   {name: 'Volody', age: 27},
+]
+console.log("arrayTask2:", arrayTask2)
+
+function filterArrayTask2(arrayTask: Person[], attribute: keyof Person, value: string): Person[] {
+  return arrayTask.filter((item) => item[attribute] === value);
+}
+console.log(filterArrayTask2(arrayTask2, 'name', 'Ivan'));
+
+
+
+
+// Задача 3: Пошук об'єкта за властивістю
+
+// Напишіть функцію, яка приймає масив об'єктів і рядкову властивість, і 
+// повертає перший об'єкт з масиву, у якого властивість має задане значення.
+
+
+function findArrayTask2(array: Person[], property: keyof Person, value: string | number): Person | undefined {
+  return array.find((item) => item[property] === value);
+}
+
+console.log(findArrayTask2(arrayTask2, 'age', 25));
+
+
+
+console.clear()
+// Задача 4: Розрахунок середнього значення
+
+// Напишіть функцію, яка приймає масив об'єктів з числовими 
+// властивостями і повертає середнє значення цих властивостей.
+
+type NumericObject = {
+  [key: string]: number;
+}
+
+const arrayTask4Number: NumericObject[] = [
+  { id: 1, value: 10 },
+  { id: 2, value: 20 },
+  { id: 3, value: 30 },
+  { id: 4, value: 40 },
+  { id: 5, value: 50 }
+];
+
+function arrayTask4(array: NumericObject[]): NumericObject[] {
+  let idSum: number = 0; // змінні для створення середнього значення
+  let valueSum: number = 0; 
+  for (let i = 0; i < array.length; i++) {
+    idSum += array[i].id;
+    valueSum += array[i].value;
+  }
+
+  idSum = idSum / array.length // виводимо середнє значення
+  valueSum = valueSum / array.length
+
+  const newArray: NumericObject[] = [ // нова змінна що створює новий масив з середніми значеннями
+    { id: idSum, value: valueSum }
+  ];
+  
+  return newArray;
+}
+
+
+console.log(arrayTask4(arrayTask4Number));
