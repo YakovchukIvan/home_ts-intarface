@@ -211,7 +211,12 @@ console.log(getUserProfile(vania,vaniaSite));
 
 
 
-console.clear()
+
+
+
+
+
+
 // |||||||||| home ts 2 |||||||||||||||
 
 
@@ -240,3 +245,28 @@ function validName(user: UserProfile): void {
 }
 
 validName(userProfile)
+
+
+console.clear()
+// =================
+
+// Задача 2: Перевірка типу масиву чисел 
+// Напишіть функцію, яка приймає параметр, і перевіряє, чи є цей параметр 
+// масивом чисел. Якщо параметр є масивом чисел, виведіть на екран їх суму. 
+// Інакше, виведіть повідомлення, що параметр не є масивом чисел.
+
+
+const arrayNumber: number[] = [1, 2, 3, 4, 5]
+console.log(typeof arrayNumber);
+
+
+function validNumber(number: number[]): void {
+  if(Array.isArray(number) && number.every((item) => typeof item === 'number')) {
+    const sum = number.reduce((acc, curr) => acc + curr, 0);
+    console.log('Параметр є масивом чисел', sum);
+  } else {
+    console.log('Параметр не є масивом чисел');
+  }
+}
+
+validNumber(arrayNumber)
