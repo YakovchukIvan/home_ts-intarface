@@ -262,7 +262,7 @@ console.log(findArrayTask2(arrayTask2, 'age', 25));
 
 
 
-console.clear()
+
 // Задача 4: Розрахунок середнього значення
 
 // Напишіть функцію, яка приймає масив об'єктів з числовими 
@@ -298,5 +298,58 @@ function arrayTask4(array: NumericObject[]): NumericObject[] {
   return newArray;
 }
 
-
 console.log(arrayTask4(arrayTask4Number));
+
+
+
+
+
+
+
+// ||||||||||||||||||||||||||||||||||||||||
+
+console.clear()
+
+// ********** TASK 4 *************
+
+
+const number1: number[] = [1,2,5,88,135,3,12,17]
+const number2: number[] = [21,2,43,10,35,5,12,17]
+const number3: number[] = [1,5,5,22,25,3,77,17]
+
+function numberCount(number: number[]): number {
+  const max:number = number.reduce((a:number, b:number) => Math.max(a, b), -Infinity);
+
+  return max
+}
+
+console.log("number1:", numberCount(number1))
+console.log("number2:", numberCount(number2))
+console.log("number3:", numberCount(number3))
+
+
+const string1: string[] = ['Київ','Рівне','Сімферополь','Україна','День','Вечір','Добрий']
+const string2: string[] = ['Розрахунок','масив ','властивостей','середнє ','універсальну','елемента']
+const string3: string[] = ['Реалізуйте','типу','ізольованих','створіть','Напишіть ','типу','яка']
+
+// function stringCount(string: string[]): string {
+//   return string.reduce((a, b) => (b.length > a.length) ? b : a);
+
+//   return string
+// }
+
+function findLongestWord(words: string[]): string {
+
+  return words.reduce((longestWord, currentWord) => {
+    if (currentWord.length > longestWord.length) {
+      return currentWord;
+    } else {
+      return longestWord;
+    }
+  });
+}
+
+
+console.log(findLongestWord(string1));
+console.log(findLongestWord(string2));
+console.log(findLongestWord(string3));
