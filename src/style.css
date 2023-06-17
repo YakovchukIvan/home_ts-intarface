@@ -30,7 +30,11 @@ p {
   padding: 10px 15px;
 }
 
-.task1, .task2, .task3, .task4 {
+.task1, 
+.task2, 
+.task3, 
+.task4, 
+.task5 {
   border: 2px dashed rgb(82, 78, 78);
   padding: 0px 10px;
 }

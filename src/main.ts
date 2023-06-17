@@ -308,7 +308,7 @@ console.log(arrayTask4(arrayTask4Number));
 
 // ||||||||||||||||||||||||||||||||||||||||
 
-console.clear()
+// console.clear()
 
 // ********** TASK 4 *************
 
@@ -332,12 +332,6 @@ const string1: string[] = ['Київ','Рівне','Сімферополь','У�
 const string2: string[] = ['Розрахунок','масив ','властивостей','середнє ','універсальну','елемента']
 const string3: string[] = ['Реалізуйте','типу','ізольованих','створіть','Напишіть ','типу','яка']
 
-// function stringCount(string: string[]): string {
-//   return string.reduce((a, b) => (b.length > a.length) ? b : a);
-
-//   return string
-// }
-
 function findLongestWord(words: string[]): string {
 
   return words.reduce((longestWord, currentWord) => {
@@ -349,7 +343,84 @@ function findLongestWord(words: string[]): string {
   });
 }
 
-
 console.log(findLongestWord(string1));
 console.log(findLongestWord(string2));
 console.log(findLongestWord(string3));
+
+
+
+
+
+
+
+// ||||||||||||||||||||||||||||||||||||||||
+
+console.clear()
+
+// ********** TASK 4 *************
+
+interface Contact {
+  name: string;
+  phoneNumber: string;
+}
+
+class Phonebook {
+  private contacts: Contact[];
+
+  constructor() {
+    this.contacts = [];
+  }
+
+  public addContact(name: string, phoneNumber: string): void {
+    const contact: Contact = {
+      name,
+      phoneNumber
+    };
+    this.contacts.push(contact);
+  }
+
+  public findContactByName(name: string): string {
+    const contact: Contact | undefined = this.contacts.find(
+      (contact) => contact.name === name
+    );
+    return contact ? contact.phoneNumber : "Контакт не знайдено";
+  }
+
+  public findContactByPhoneNumber(phoneNumber: string): string {
+    const contact: Contact | undefined = this.contacts.find(
+      (contact) => contact.phoneNumber === phoneNumber
+    );
+    return contact ? contact.name : "Контакт не знайдено";
+  }
+
+  public deleteContact(name: string): boolean {
+    const index: number = this.contacts.findIndex(
+      (contact) => contact.name === name
+    );
+    if (index !== -1) {
+      this.contacts.splice(index, 1);
+      return true;
+    }
+    return false;
+  }
+}
+
+// Приклад використання
+const phonebook: Phonebook = new Phonebook();
+
+phonebook.addContact("John Doe", "+123456789");
+phonebook.addContact("Jane Smith", "+987654321");
+phonebook.addContact("Mike Johnson", "+555555555");
+
+console.log(phonebook.findContactByName("Jane Smith")); // Виведе: +987654321
+console.log(phonebook.findContactByPhoneNumber("+555555555")); // Виведе: Mike Johnson
+
+phonebook.deleteContact("Jane Smith");
+console.log(phonebook.findContactByName("Jane Smith")); // Виведе: Контакт не знайдено
+
+
+
+
+
+
+
