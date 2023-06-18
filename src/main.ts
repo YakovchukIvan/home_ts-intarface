@@ -408,15 +408,15 @@ class Phonebook {
 // Приклад використання
 const phonebook: Phonebook = new Phonebook();
 
-phonebook.addContact("John Doe", "+123456789");
-phonebook.addContact("Jane Smith", "+987654321");
-phonebook.addContact("Mike Johnson", "+555555555");
+phonebook.addContact("Іван", "+124112");
+phonebook.addContact("Павло", "+223344");
+phonebook.addContact("Майк", "+123456");
 
-console.log(phonebook.findContactByName("Jane Smith")); // Виведе: +987654321
-console.log(phonebook.findContactByPhoneNumber("+555555555")); // Виведе: Mike Johnson
+console.log(phonebook.findContactByName("Вова")); // Виведе: Вова
+console.log(phonebook.findContactByPhoneNumber("+554455")); // Виведе: 554455
 
-phonebook.deleteContact("Jane Smith");
-console.log(phonebook.findContactByName("Jane Smith")); // Виведе: Контакт не знайдено
+phonebook.deleteContact("Майк");
+console.log(phonebook.findContactByName("Майк")); // Виведе: Контакт не знайдено
 
 
 
